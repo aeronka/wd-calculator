@@ -12,15 +12,21 @@ body {
     display: inline-block;
     margin-left: auto;
     margin-right: auto;
-    margin-top: 50px;
+    padding: 10px 15px 25px 30px;
     border: 1px solid rgb(116, 163, 199);
     border-radius: 3px;
-    box-shadow: 1px 1px 6px 0px rgba(0,0,0,0.3)
+    box-shadow: 1px 1px 6px 0px rgba(0,0,0,0.3);
 }
+
+    .header {
+        padding: 10px 0;
+        margin: 70px auto 0px auto;
+        width: 306px;
+    }
 
     .deposit-calculator-terms {
         list-style: none;
-        padding: 13px 20px 20px 18px;
+        padding-right: 20px;
         display: inline-block;
         height: 210px;
         width: 270px;
@@ -32,21 +38,18 @@ body {
             padding: 10px 0px;
         }
 
-        .terms-item:last-child {
-            text-align: center;
-        }
-
         .characteristics {
             height: 19px;
-            border: 1px solid rgb(116, 163, 199);
-            border-radius: 3px;
+            border: 0px;
+            border-bottom: 1px solid rgb(116, 163, 199);
+            outline: none;
             font-size: 14px;
             padding: 3px 2px;
             margin-left: 5px
         }
 
         .rate {
-            width: 50px;
+            width: 40px;
         }
 
         .sum {
@@ -54,7 +57,11 @@ body {
         }
 
         .measure {
-            padding-left: 5px;
+            padding-left: 3px;
+        }
+
+        .terms-item-title {
+            text-align: center;
         }
 
         .slider-months {
@@ -80,20 +87,26 @@ body {
 
         .slider-values {
             list-style: none;
-            width: 261px;
+            width: 300px;
             margin-top: 10px;
             font-size: 13px;
+            position: relative;
+            left: -18px;
         }
 
             .slider-values-item {
                 display: inline-block;
-                padding-left: 47px;
-                position: relative;
-                left: -2px;
+                padding-left: 9px;
+                width: 50px;
+                text-align: center;
             }
 
             .slider-values-item:first-child {
                 padding-left: 0px;
+            }
+
+            .slider-values-item:last-child {
+                padding-left: 14px;
             }
 
 .separator {
@@ -108,23 +121,25 @@ body {
 /* Стили диаграмм */
 
     .diagram {
+        width: 176px;
         padding: 20px 10px;
         display: inline-block;
         vertical-align: middle;
     }
         
-    .title {
-        padding-top: 5px;
-        padding-bottom: 5px;
+    .diagram-title {
+        padding: 5px 0;
+        font-size: 14px;
     }
 
     .money {
         padding-bottom: 10px;
         display: inline-block;
+        font-size: 17px;
     }
 
     .сhart {
-        width: 40px;
+        width: 48px;
         margin-left: auto;
         margin-right: auto;
         box-shadow: 1px -1px 1px rgba(0,0,0,0.1);
@@ -137,14 +152,15 @@ body {
         }
 
         .chart-after{
-            height: 70px;
+            height: 80px;
             background: rgb(60, 179, 113);
             background: linear-gradient(to top, rgb(60, 179, 113), rgb(80, 215, 113));
         }
 
     .diagram-section {
         display: inline-block;
-        padding: 0 7px 10px 7px;
+        vertical-align: bottom;
+        width: 84px;
     }
 
         .diagram-before {
