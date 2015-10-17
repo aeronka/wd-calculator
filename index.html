@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Calculator</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+    <div class="deposit-calculator">
+        <ul class="deposit-calculator-terms">
+            <li class="terms-item">
+                <span>Ставка:</span>
+                <input class="characteristics rate" name="percent" type="text" value="10"><span class="measure">%</span>
+            </li>
+            <li class="terms-item">
+                <span>Сумма:</span>
+                <input class="characteristics sum" name="money" type="text" value="1000"><span class="measure">руб.</span>
+            </li>
+            <li class="terms-item">
+                <label><input name="capitalization" type="checkbox">
+                <span>с капитализацией</span></label>
+            </li>
+            <li class="terms-item">
+                <span>Срок вклада</span>
+                <div class="slider-months">
+                    <div class="thumb"></div>
+                </div>
+                <ul class="slider-values">
+                    <li class="slider-values-item">3</li>
+                    <li class="slider-values-item">6</li>
+                    <li class="slider-values-item">12</li>
+                    <li class="slider-values-item">18</li>
+                    <li class="slider-values-item">24</li>
+                </ul>
+            </li>
+        </ul>
+        <span class="separator"></span>
+        <div class="diagram">
+            <div class="diagram-section diagram-before">
+                <p class="title">Было:</p>
+                <p class="money">1000</p><span class="measure">руб.</span>
+                <div class="сhart chart-before"></div>
+            </div>
+            <div class="diagram-section diagram-after">
+                <p class="title">Станет:</p>
+                <p class="money">1100</p><span class="measure">руб.</span>
+                <div class="сhart chart-after"></div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
