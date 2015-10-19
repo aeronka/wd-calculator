@@ -5,6 +5,7 @@
     <title>Calculator</title>
     <link rel="stylesheet" type="text/css" href="style.css">
     <link rel="stylesheet" type="text/css" href="b-rub/rubstyle.css">
+    
 </head>
 <body>
     <h2 class="header">Депозитный калькулятор</h2>
@@ -12,7 +13,7 @@
         <ul class="deposit-calculator-terms">
             <li class="terms-item">
                 <span>Сумма</span>
-                <input class="characteristics sum" name="money" type="text" value="10&thinsp;000"><span class="measure b-rub">Р</span>
+                <input class="characteristics sum" name="sum" type="text" value="10000"><span class="measure b-rub">Р</span>
             </li>
             <li class="terms-item">
                 <span>Ставка</span>
@@ -34,15 +35,18 @@
         <div class="diagram">
             <div class="diagram-section diagram-before">
                 <p class="diagram-title">Было</p>
-                <p class="money">10&thinsp;000</p><span class="measure b-rub">Р</span>
+                <p class="money"></p><span class="measure b-rub">Р</span>
                 <div class="сhart chart-before"></div>
             </div>
             <div class="diagram-section diagram-after">
                 <p class="diagram-title">Станет</p>
-                <p class="money">11&thinsp;000</p><span class="measure b-rub">Р</span>
+                <p class="money"></p><span class="measure b-rub">Р</span>
                 <div class="сhart chart-after"></div>
             </div>
         </div>
     </div>
+
+    <script src="js/calculate.js"></script>
+    <script src="js/index.js"></script>
 </body>
 </html>
