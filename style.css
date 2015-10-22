@@ -4,14 +4,14 @@
 }
 
 body {
-    font-family: Arial, Helvetica, Calibri, sans-serif;
     text-align: center;
+    font-family: Arial, Helvetica, Calibri, sans-serif;
 }
 
 .deposit-calculator {
     display: inline-block;
-    margin-left: auto;
     margin-right: auto;
+    margin-left: auto;
     padding: 10px 15px 25px 30px;
     border: 1px solid rgb(116, 163, 199);
     border-radius: 3px;
@@ -19,20 +19,20 @@ body {
 }
 
     .header {
-        padding: 16px 0;
         margin: 70px auto 0px auto;
+        padding: 16px 0;
         width: 306px;
         font-weight: normal;
     }
 
     .deposit-calculator-terms {
-        list-style: none;
-        padding-right: 20px;
         display: inline-block;
-        height: 176px;
+        padding-right: 20px;
         width: 270px;
-        text-align: left;
+        height: 176px;
+        list-style: none;
         vertical-align: middle;
+        text-align: left;
     }
         
         .terms-item {
@@ -41,13 +41,13 @@ body {
         }
 
         .characteristics {
+            margin-left: 5px;
+            padding: 3px 2px;
             height: 19px;
+            outline: none;
             border: 0px;
             border-bottom: 1px solid rgb(116, 163, 199);
-            outline: none;
             font-size: 14px;
-            padding: 3px 2px;
-            margin-left: 5px
         }
 
         .rate {
@@ -89,12 +89,12 @@ body {
         }
 
         .slider-values {
-            list-style: none;
-            width: 300px;
-            margin-top: 10px;
-            font-size: 13px;
             position: relative;
             left: -18px;
+            margin-top: 10px;
+            width: 300px;
+            list-style: none;
+            font-size: 13px;
         }
 
             .slider-values-item {
@@ -113,20 +113,19 @@ body {
             }
 
 .separator {
-    padding-right: 1px;
-    height: 150px;
     display: inline-block;
+    width: 1px;
+    height: 150px;
+    background: rgba(116, 163, 199, .5);
     vertical-align: middle;
-    background: rgb(116, 163, 199);
-    opacity: 0.5;
 }
 
 /* Стили диаграмм */
 
     .diagram {
-        width: 176px;
-        padding: 20px 10px;
         display: inline-block;
+        padding: 20px 10px;
+        width: 176px;
         vertical-align: middle;
     }
         
@@ -136,32 +135,31 @@ body {
     }
 
     .money {
-        padding-bottom: 10px;
         display: inline-block;
+        padding-bottom: 10px;
         font-size: 17px;
     }
 
     .сhart {
-        width: 48px;
-        margin-left: auto;
         margin-right: auto;
+        margin-left: auto;
+        width: 48px;
         box-shadow: 1px -1px 1px rgba(0,0,0,0.1);
     }
 
-        .chart-before{
+        .chart-before {
             height: 70px;
             background: rgb(116, 163, 199);
             background: linear-gradient(to top, rgb(116, 163, 199), rgb(116, 205, 199));
         }
 
-        .chart-after{
-            height: 80px;
+        .chart-after {
             background: rgb(60, 179, 113);
             background: linear-gradient(to top, rgb(60, 179, 113), rgb(80, 215, 113));
         }
 
     .diagram-section {
         display: inline-block;
-        vertical-align: bottom;
         width: 84px;
+        vertical-align: bottom;
     }
