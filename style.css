@@ -67,7 +67,7 @@ body {
             padding-left: 10px;
         }
 
-        .slider-months {
+        .slider {
             margin-top: 20px;
             width: 250px;
             height: 5px;
@@ -78,7 +78,7 @@ body {
             background: linear-gradient(left top, #E0E0E0, #EEEEEE);
         }
 
-        .thumb {
+        .slider-thumb {
             position: relative;
             top: -5px;
             width: 10px;

@@ -30,7 +30,6 @@ Calculator.prototype.displayRezultAfter = function() {
 Calculator.prototype.formInput = function() {
     this.displayRezultBefore();
     this.displayRezultAfter();
-   // event.preventDefault();
 };
 
 //рассчет итоговой суммы
