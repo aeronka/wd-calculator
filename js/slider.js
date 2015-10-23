@@ -3,7 +3,8 @@ function Slider(options) {
     //массив месяцев - вариантов сроков вклада
     this.labels = options.labels;
     this.sliderThumb = this.sliderElem.querySelector('.slider-thumb');
-    this.max = 250;
+    //Максимальное значение шкалы слайдера, соответствующее максимальному количеству месяцев
+    this.max = this.sliderElem.clientWidth;
 
     this.rightEdge = this.sliderElem.offsetWidth - this.sliderThumb.offsetWidth;
     //колбэки событий, чтобы не потеряли this
@@ -68,16 +69,32 @@ Slider.prototype.endDrag = function() {
     document.removeEventListener('mouseup', this.onDocumentMouseUpBinded);
 };
 
+//генерация события передвижения, передача рассчитанного значения
 Slider.prototype.slideEvent = function(newLeft) {
-    var calcValue = this.calculateUserValue(newLeft);
-    console.log(calcValue);
+    var calcMonthValue = this.calculateUserValue(newLeft);
     var newSlideEvent = new CustomEvent("slide", {
         bubbles: true,
-        detail: calcValue
+        detail: calcMonthValue
     });
     this.sliderElem.dispatchEvent(newSlideEvent);
 };
 
-Slider.prototype.calculateUserValue = function(newLeft) {
+//рассчет текущего значения слайдера без учета интервалов
+Slider.prototype.calculateCurrentValue = function(newLeft) {
     return Math.round((this.max * newLeft)/this.rightEdge);
+};
+
+//рассчет выбранного значения количества месяцев с учетом интервалов
+Slider.prototype.calculateUserValue = function(newLeft) {
+    var currentValue = this.calculateCurrentValue(newLeft);
+    console.log('текущее ' + currentValue);
+    //длина одного интервала между значениями
+    var interval = this.max/this.labels.length;
+    var monthPosition = Math.round(currentValue/interval - 0.5);
+    //проверяем значение для начала шкалы
+    if(monthPosition < 0) monthPosition = 0;
+    //проверяем значение в конце шкалы
+    if(monthPosition > this.labels.length - 1) monthPosition = this.labels.length - 1;
+    //возвращает число - количество месяцев
+    return this.labels[monthPosition];
 };

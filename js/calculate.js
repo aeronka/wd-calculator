@@ -9,8 +9,10 @@ function Calculator(options) {
     this.chartBefore = this.diagramRezultBefore.querySelector('.chart-before');
     this.chartAfter = this.diagramRezultAfter.querySelector('.chart-after');
 
+    this.currentMonthsValue = 3;
+
     this.displayRezultBefore();
-    this.displayRezultAfter();
+    this.displayRezultAfter(this.currentMonthsValue);
 }
 
 //отображение первоначальной суммы в поле результата
@@ -20,28 +22,30 @@ Calculator.prototype.displayRezultBefore = function() {
 };
 
 //отображение итоговой суммы
-Calculator.prototype.displayRezultAfter = function() {
-    var money = this.calculateRezultAfter();
+Calculator.prototype.displayRezultAfter = function(months) {
+    var money = this.calculateRezultAfter(months);
+    console.log(money);
     this.moneyRezultAfter.innerHTML = money.moneyAft;
 
     this.calculateDiagramRezultHeight(money);
 };
 
-Calculator.prototype.formInput = function() {
+Calculator.prototype.formInput = function(months) {
+    if(months) this.currentMonthsValue = months;
     this.displayRezultBefore();
-    this.displayRezultAfter();
+    this.displayRezultAfter(this.currentMonthsValue);
 };
 
+
 //рассчет итоговой суммы
-Calculator.prototype.calculateRezultAfter = function() {
+Calculator.prototype.calculateRezultAfter = function(months) {
     var capitalization = this.elem.querySelector('input[name="capitalization"]');
     var rate = this.elem.querySelector('input[name="percent"]').value;
-    //получить значение месяцев из слайдера
-   // var months = this.elem.querySelector('select[name="months"]').value;
-    var months = 12;
+    //months - значение количества месяцев из слайдера
     var moneyBefore = this.elem.querySelector('input[name="sum"]').value;
     var moneyAfter = moneyBefore;
-    var monthlyIncrease = rate/months/100;
+    var monthlyIncrease = rate/12/100;
+    console.log('месячный доход' + monthlyIncrease);
 
     if (!capitalization.checked) {
         moneyAfter = moneyBefore * (1 + monthlyIncrease * months);
