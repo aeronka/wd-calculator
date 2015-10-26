@@ -7,6 +7,7 @@ function Slider(options) {
     this.max = this.sliderElem.clientWidth;
 
     this.rightEdge = this.sliderElem.offsetWidth - this.sliderThumb.offsetWidth;
+
     //колбэки событий, чтобы не потеряли this
     this.onSliderMouseDownBinded = this.onSliderMouseDown.bind(this);
     this.onDocumentMouseMoveBinded = this.onDocumentMouseMove.bind(this);
@@ -65,6 +66,8 @@ Slider.prototype.onDocumentMouseUp = function(e) {
 };
 
 Slider.prototype.endDrag = function() {
+    //перескакивание слайдера по центру выбранного интервала
+    this.sliderThumb.style.left = this.currentSliderValue + 'px';
     document.removeEventListener('mousemove', this.onDocumentMouseMoveBinded);
     document.removeEventListener('mouseup', this.onDocumentMouseUpBinded);
 };
@@ -81,20 +84,37 @@ Slider.prototype.slideEvent = function(newLeft) {
 
 //рассчет текущего значения слайдера без учета интервалов
 Slider.prototype.calculateCurrentValue = function(newLeft) {
-    return Math.round((this.max * newLeft)/this.rightEdge);
+    return Math.round((this.max * newLeft) / this.rightEdge);
 };
 
 //рассчет выбранного значения количества месяцев с учетом интервалов
 Slider.prototype.calculateUserValue = function(newLeft) {
     var currentValue = this.calculateCurrentValue(newLeft);
-    console.log('текущее ' + currentValue);
+
     //длина одного интервала между значениями
-    var interval = this.max/this.labels.length;
-    var monthPosition = Math.round(currentValue/interval - 0.5);
+    var interval = this.max / (this.labels.length - 1);
+    var monthPosition = Math.ceil(currentValue / interval - 0.5);
     //проверяем значение для начала шкалы
-    if(monthPosition < 0) monthPosition = 0;
+    if (monthPosition < 0) monthPosition = 0;
     //проверяем значение в конце шкалы
-    if(monthPosition > this.labels.length - 1) monthPosition = this.labels.length - 1;
-    //возвращает число - количество месяцев
+    if (monthPosition > this.labels.length - 1) monthPosition = this.labels.length - 1;
+
+    this.calculateStickingValue(monthPosition, interval);
+    
+    //возвращает число - количество месяцев вклада
     return this.labels[monthPosition];
+};
+
+//рассчет значения на которое должен перескочить sliderThumb
+Slider.prototype.calculateStickingValue = function(monthPosition, interval) {
+    //текущее значение слайдера, куда он перескочил
+    this.currentSliderValue = interval * monthPosition - this.sliderThumb.offsetWidth / 2;
+
+    //проверка границ слайдера
+    if (this.currentSliderValue < 0) {
+      this.currentSliderValue = 0;
+    }
+    if (this.currentSliderValue > this.rightEdge) {
+        this.currentSliderValue = this.rightEdge;
+    }
 };

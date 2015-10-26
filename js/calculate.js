@@ -8,8 +8,8 @@ function Calculator(options) {
 
     this.chartBefore = this.diagramRezultBefore.querySelector('.chart-before');
     this.chartAfter = this.diagramRezultAfter.querySelector('.chart-after');
-
-    this.currentMonthsValue = 3;
+    //текущее значение слайдера
+    this.currentMonthsValue = options.sliderFirstValue;
 
     this.displayRezultBefore();
     this.displayRezultAfter(this.currentMonthsValue);
@@ -18,14 +18,15 @@ function Calculator(options) {
 //отображение первоначальной суммы в поле результата
 Calculator.prototype.displayRezultBefore = function() {
     var moneyBefore = this.elem.querySelector('input[name="sum"]');
-    this.moneyRezultBefore.innerHTML = moneyBefore.value || 0;
+    //форматируем сумму
+    this.moneyRezultBefore.innerHTML = (+moneyBefore.value).toLocaleString() || 0;
 };
 
 //отображение итоговой суммы
 Calculator.prototype.displayRezultAfter = function(months) {
     var money = this.calculateRezultAfter(months);
-    console.log(money);
-    this.moneyRezultAfter.innerHTML = money.moneyAft;
+    //форматируем сумму
+    this.moneyRezultAfter.innerHTML = money.moneyAft.toLocaleString();
 
     this.calculateDiagramRezultHeight(money);
 };
@@ -44,8 +45,7 @@ Calculator.prototype.calculateRezultAfter = function(months) {
     //months - значение количества месяцев из слайдера
     var moneyBefore = this.elem.querySelector('input[name="sum"]').value;
     var moneyAfter = moneyBefore;
-    var monthlyIncrease = rate/12/100;
-    console.log('месячный доход' + monthlyIncrease);
+    var monthlyIncrease = rate / 12 / 100;
 
     if (!capitalization.checked) {
         moneyAfter = moneyBefore * (1 + monthlyIncrease * months);
@@ -61,9 +61,9 @@ Calculator.prototype.calculateRezultAfter = function(months) {
 
 //рассчет высоты диаграммы итоговой суммы относительно исходной
 Calculator.prototype.calculateDiagramRezultHeight = function(money) {
-    var percentMoneyAfter = (money.moneyAft * 100)/money.moneyBef;
+    var percentMoneyAfter = (money.moneyAft * 100) / money.moneyBef;
     var chartBefore = this.elem.querySelector('.chart-before');
-    var newHeight = chartBefore.offsetHeight + chartBefore.offsetHeight * (percentMoneyAfter/100 - 1);
+    var newHeight = chartBefore.offsetHeight + chartBefore.offsetHeight * (percentMoneyAfter / 100 - 1);
     this.chartAfter.style.height = newHeight + 'px';
 };
 

@@ -1,11 +1,12 @@
 document.addEventListener("DOMContentLoaded", function() {
-    var calculator = new Calculator({
-        elem: document.querySelector('.deposit-calculator')
+    var slider = new Slider({
+        sliderElem: document.querySelector('.slider'),
+        labels: [3, 6, 12, 18, 24]
     });
 
-    var slider = new Slider({
-        sliderElem: calculator.elem.querySelector('.slider'),
-        labels: [3, 6, 12, 18, 24]
+    var calculator = new Calculator({
+        elem: document.querySelector('.deposit-calculator'),
+        sliderFirstValue: slider.labels[0]
     });
 
 // для отслеживания и реагирования на изменения в текстовых полях input сразу же, не дожидаясь увода фокуса
@@ -25,7 +26,6 @@ document.addEventListener("DOMContentLoaded", function() {
   
 //при возникновении события слайдер отдает значение для рассчета суммы вклада
     slider.sliderElem.addEventListener('slide', function(event) {
-        console.log('количество месяцев ' + event.detail);
         calculator.formInput(event.detail);
     });
     
