@@ -129,6 +129,14 @@ body {
         width: 176px;
         vertical-align: middle;
     }
+
+    .diagram-big-money {
+        font-size: 15px;
+    }
+
+    .diagram-little-money {
+        font-size: 17px;
+    }
         
     .diagram-title {
         padding: 5px 0;
@@ -138,7 +146,6 @@ body {
     .money {
         display: inline-block;
         padding-bottom: 10px;
-        font-size: 17px;
     }
 
     .сhart {

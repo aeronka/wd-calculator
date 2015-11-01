@@ -1,5 +1,7 @@
 function Calculator(options) {
     var elem = this.elem = options.elem;
+
+    this.diagram = this.elem.querySelector('.diagram');
     this.diagramRezultBefore = elem.querySelector('.diagram-before');
     this.diagramRezultAfter = elem.querySelector('.diagram-after');
 
@@ -25,6 +27,8 @@ Calculator.prototype.displayRezultBefore = function() {
 //отображение итоговой суммы
 Calculator.prototype.displayRezultAfter = function(months) {
     var money = this.calculateRezultAfter(months);
+
+    this.changeMoneyFontSize(money);
     //форматируем сумму
     this.moneyRezultAfter.innerHTML = money.moneyAft.toLocaleString();
 
@@ -71,6 +75,25 @@ Calculator.prototype.calculateDiagramRezultHeight = function(money) {
 Calculator.prototype.checkSymbol = function(event) {
     var symbol = getChar(event);
     if (!(+symbol || symbol == '0')) event.preventDefault();
+};
+
+//изменение размеров шрифта сумм над диаграммами
+Calculator.prototype.changeMoneyFontSize = function(money) {
+    if (money.moneyAft.toString().length > 6) {
+        this.setFontBigMoney();
+    } else {
+        this.setFontLittleMoney();
+    }
+};
+
+Calculator.prototype.setFontLittleMoney = function() {
+    if (this.diagram.classList.contains('diagram-big-money')) this.diagram.classList.remove('diagram-big-money');
+    if (!this.diagram.classList.contains('diagram-little-money')) this.diagram.classList.add('diagram-little-money');
+};
+
+Calculator.prototype.setFontBigMoney = function() {
+    if (this.diagram.classList.contains('diagram-little-money')) this.diagram.classList.remove('diagram-little-money');
+    if (!this.diagram.classList.contains('diagram-big-money')) this.diagram.classList.add('diagram-big-money');
 };
 
 // вспомогательная функция для получения символа из события keypress
