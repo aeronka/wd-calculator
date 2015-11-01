@@ -73,8 +73,9 @@ Calculator.prototype.calculateDiagramRezultHeight = function(money) {
 
 //проверка на ввод только числа, запрет ввода текста
 Calculator.prototype.checkSymbol = function(event) {
-    var symbol = getChar(event);
-    if (!(+symbol || symbol == '0')) event.preventDefault();
+    var symbol = +getChar(event);
+    if (symbol >= 0 || symbol <= 9) return;
+    event.preventDefault();
 };
 
 //изменение размеров шрифта сумм над диаграммами
