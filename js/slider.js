@@ -3,7 +3,7 @@ function Slider(options) {
     //массив месяцев - вариантов сроков вклада
     this.labels = options.labels;
     this.sliderThumb = this.sliderElem.querySelector('.slider-thumb');
-    //Максимальное значение шкалы слайдера, соответствующее максимальному количеству месяцев
+    //Возьмем максимальное значение шкалы слайдера равным длинне самого слайдера
     this.max = this.sliderElem.clientWidth;
 
     this.rightEdge = this.sliderElem.offsetWidth - this.sliderThumb.offsetWidth;
@@ -22,7 +22,7 @@ function Slider(options) {
 }
 
 Slider.prototype.onSliderMouseDown = function(event) {
-    if (event.target.closest('.slider-thumb')) {
+    if (event.target.matches('.slider-thumb')) {
         this.startDrag(event.clientX, event.clientY);
         event.preventDefault(); // не начинать выделение элемента
     }
@@ -40,29 +40,28 @@ Slider.prototype.startDrag = function(startClientX, startClientY) {
     document.addEventListener('mouseup', this.onDocumentMouseUpBinded);
 };
 
-Slider.prototype.moveTo = function(clientX) {
-    // вычесть координату родителя, т.к. position: relative
-    var newLeft = clientX - this.shiftX - this.sliderCoords.left;
-
-    // курсор ушёл вне слайдера
-    if (newLeft < 0) {
-      newLeft = 0;
-    }
-    if (newLeft > this.rightEdge) {
-      newLeft = this.rightEdge;
-    }
-
-    this.slideEvent(newLeft);
-
-    this.sliderThumb.style.left = newLeft + 'px';
-};
-
 Slider.prototype.onDocumentMouseMove = function(e) {
     this.moveTo(e.clientX);
 };
 
 Slider.prototype.onDocumentMouseUp = function(e) {
     this.endDrag();
+};
+
+Slider.prototype.moveTo = function(clientX) {
+    // вычесть координату родителя, т.к. position: relative
+    var newLeft = clientX - this.shiftX - this.sliderCoords.left;
+
+    // курсор ушёл вне слайдера
+    if (newLeft < 0) {
+        newLeft = 0;
+    } else if (newLeft > this.rightEdge) {
+        newLeft = this.rightEdge;
+    }
+
+    this.slideEvent(newLeft);
+
+    this.sliderThumb.style.left = newLeft + 'px';
 };
 
 Slider.prototype.endDrag = function() {
@@ -75,7 +74,7 @@ Slider.prototype.endDrag = function() {
 //генерация события передвижения, передача рассчитанного значения
 Slider.prototype.slideEvent = function(newLeft) {
     var calcMonthValue = this.calculateUserValue(newLeft);
-    var newSlideEvent = new CustomEvent("slide", {
+    var newSlideEvent = new CustomEvent('slide', {
         bubbles: true,
         detail: calcMonthValue
     });
@@ -94,10 +93,12 @@ Slider.prototype.calculateUserValue = function(newLeft) {
     //длина одного интервала между значениями
     var interval = this.max / (this.labels.length - 1);
     var monthPosition = Math.ceil(currentValue / interval - 0.5);
-    //проверяем значение для начала шкалы
-    if (monthPosition < 0) monthPosition = 0;
-    //проверяем значение в конце шкалы
-    if (monthPosition > this.labels.length - 1) monthPosition = this.labels.length - 1;
+
+    if (monthPosition < 0) { //проверяем значение для начала шкалы
+        monthPosition = 0;
+    } else if (monthPosition > this.labels.length - 1) { //проверяем значение в конце шкалы
+        monthPosition = this.labels.length - 1;
+    }
 
     this.calculateStickingValue(monthPosition, interval);
     
@@ -112,9 +113,8 @@ Slider.prototype.calculateStickingValue = function(monthPosition, interval) {
 
     //проверка границ слайдера
     if (this.currentSliderValue < 0) {
-      this.currentSliderValue = 0;
-    }
-    if (this.currentSliderValue > this.rightEdge) {
+        this.currentSliderValue = 0;
+    } else if (this.currentSliderValue > this.rightEdge) {
         this.currentSliderValue = this.rightEdge;
     }
 };

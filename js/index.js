@@ -1,4 +1,4 @@
-document.addEventListener("DOMContentLoaded", function() {
+document.addEventListener('DOMContentLoaded', function() {
     var slider = new Slider({
         sliderElem: document.querySelector('.slider'),
         labels: [3, 6, 12, 18, 24]
