@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Calculator</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <link rel="stylesheet" type="text/css" href="b-rub/rubstyle.css">
+    
+</head>
+<body>
+    <h2 class="header">Депозитный калькулятор</h2>
+    <div class="deposit-calculator">
+        <ul class="deposit-calculator-terms">
+            <li class="terms-item">
+                <span>Сумма</span>
+                <input class="characteristics sum" name="sum" type="text" value="10000"><span class="measure b-rub">Р</span>
+            </li>
+            <li class="terms-item">
+                <span>Ставка</span>
+                <input class="characteristics rate" name="percent" type="text" value="10"><span class="measure">%</span>
+                <label class="capitalization"><input name="capitalization" type="checkbox">
+                <span>с капитализацией</span></label>
+            </li>
+            <li class="terms-item">
+                <p class="terms-item-title">Срок вклада</p>
+                <div class="slider">
+                    <div class="slider-thumb"></div>
+                </div>
+                <ul class="slider-values">
+                    <li class="slider-values-item">3 мес</li><li class="slider-values-item">6 мес</li><li class="slider-values-item">1 год</li><li class="slider-values-item">1,5 года</li><li class="slider-values-item">2 года</li>
+                </ul>
+            </li>
+        </ul>
+        <span class="separator"></span>
+        <div class="diagram">
+            <div class="diagram-section diagram-before">
+                <p class="diagram-title">Было</p>
+                <p class="money"></p><span class="measure b-rub">Р</span>
+                <div class="сhart chart-before"></div>
+            </div>
+            <div class="diagram-section diagram-after">
+                <p class="diagram-title">Станет</p>
+                <p class="money"></p><span class="measure b-rub">Р</span>
+                <div class="сhart chart-after"></div>
+            </div>
+        </div>
+    </div>
+    <script src="https://cdn.polyfill.io/v1/polyfill.min.js?features=Element.prototype.closest,Intl.~locale.ru,Element.prototype.classList,CustomEvent"></script>
+    <script src="js/slider.js"></script>
+    <script src="js/calculate.js"></script>
+    <script src="js/index.js"></script>
+</body>
+</html>

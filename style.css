@@ -1,0 +1,177 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    text-align: center;
+    font-family: Arial, Helvetica, Calibri, sans-serif;
+}
+
+.deposit-calculator {
+    display: inline-block;
+    margin-right: auto;
+    margin-left: auto;
+    padding: 10px 15px 25px 30px;
+    border: 1px solid rgb(116, 163, 199);
+    border-radius: 3px;
+    box-shadow: 1px 1px 6px 0px rgba(0,0,0,0.3);
+}
+
+    .header {
+        margin: 70px auto 0px auto;
+        padding: 16px 0;
+        width: 306px;
+        font-weight: normal;
+    }
+
+    .deposit-calculator-terms {
+        display: inline-block;
+        padding-right: 20px;
+        width: 270px;
+        height: 176px;
+        list-style: none;
+        vertical-align: middle;
+        text-align: left;
+    }
+        
+        .terms-item {
+            padding: 10px 0px;
+            font-size: 14px;
+        }
+
+        .characteristics {
+            margin-left: 5px;
+            padding: 3px 2px;
+            height: 19px;
+            outline: none;
+            border: 0px;
+            border-bottom: 1px solid rgb(116, 163, 199);
+            font-size: 14px;
+        }
+
+        .rate {
+            width: 30px;
+            text-align: center;
+        }
+
+        .sum {
+            width: 80px;
+        }
+
+        .measure {
+            padding-left: 3px;
+        }
+
+        .capitalization{
+            padding-left: 10px;
+        }
+
+        .slider {
+            margin-top: 20px;
+            width: 260px;
+            height: 5px;
+            border-radius: 5px;
+            background: #E0E0E0;
+            background: -moz-linear-gradient(left top, #E0E0E0, #EEEEEE) repeat scroll 0 0 transparent;
+            background: -webkit-gradient(linear, left top, right bottom, from(#E0E0E0), to(#EEEEEE));
+            background: linear-gradient(left top, #E0E0E0, #EEEEEE);
+        }
+
+        .slider-thumb {
+            position: relative;
+            top: -5px;
+            width: 10px;
+            height: 15px;
+            border-radius: 3px;
+            background: rgb(116, 163, 199);
+            cursor: pointer;
+        }
+
+        .slider-values {
+            position: relative;
+            left: -17px;
+            margin-top: 10px;
+            width: 300px;
+            list-style: none;
+            font-size: 13px;
+        }
+
+            .slider-values-item {
+                display: inline-block;
+                padding-left: 12px;
+                width: 50px;
+                text-align: center;
+            }
+
+            .slider-values-item:first-child {
+                padding-left: 0px;
+            }
+
+            .slider-values-item:last-child {
+                padding-left: 14px;
+            }
+
+.separator {
+    display: inline-block;
+    width: 1px;
+    height: 150px;
+    background: rgba(116, 163, 199, .5);
+    background:linear-gradient(to bottom, transparent 0, rgba(116, 163, 199, .8) 50%, transparent 100%);
+    vertical-align: middle;
+}
+
+/* Стили диаграмм */
+
+    .diagram {
+        display: inline-block;
+        padding: 20px 10px;
+        width: 176px;
+        vertical-align: middle;
+    }
+
+    .diagram-big-money {
+        font-size: 15px;
+    }
+
+    .diagram-little-money {
+        font-size: 17px;
+    }
+        
+    .diagram-title {
+        padding: 5px 0;
+        font-size: 14px;
+    }
+
+    .money {
+        display: inline-block;
+        padding-bottom: 10px;
+    }
+
+    .сhart {
+        margin-right: auto;
+        margin-left: auto;
+        width: 48px;
+        box-shadow: 1px -1px 1px rgba(0,0,0,0.1);
+    }
+
+        .chart-before {
+            height: 70px;
+            background: rgb(116, 163, 199);
+            background: linear-gradient(to top, rgb(116, 163, 199), rgb(116, 205, 199));
+            background: -moz-linear-gradient(to top, rgb(116, 163, 199), rgb(116, 205, 199)) repeat scroll 0 0 transparent;
+            background: -webkit-gradient(linear, to top, from(rgb(116, 163, 199)), to(rgb(116, 205, 199)));
+        }
+
+        .chart-after {
+            background: rgb(60, 179, 113);
+            background: linear-gradient(to top, rgb(60, 179, 113), rgb(80, 215, 113));
+            background: -moz-linear-gradient(to top, rgb(60, 179, 113), rgb(80, 215, 113)) repeat scroll 0 0 transparent;
+            background: -webkit-gradient(linear, to top, from(rgb(60, 179, 113)), to(rgb(80, 215, 113)));
+        }
+
+    .diagram-section {
+        display: inline-block;
+        width: 84px;
+        vertical-align: bottom;
+    }
